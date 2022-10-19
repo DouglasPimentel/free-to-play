@@ -1,49 +1,25 @@
-import * as React from "react"
-import { Link, HeadFC } from "gatsby"
+import * as React from "react";
+import { HeadFC } from "gatsby";
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+import Layout from "../components/Layout/Layout";
+import Seo from "../components/Seo/Seo";
+import LinkButton from "../components/LinkButton/LinkButton";
 
 const NotFoundPage = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry 😔, we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
+    <Layout>
+      <div className="py-16 text-center">
+        <h1 className="mb-14 text-4xl">Página não encontrada!</h1>
+        <span className="my-14 text-9xl text-secondary font-bold">404</span>
+        <p className="mt-14 mb-12 text-lg">
+          Desculpe 😔, não conseguimos encontrar o que você estava procurando.
+        </p>
+        <LinkButton primary={true} slug="/" label="Voltar para home" />
+      </div>
+    </Layout>
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;
 
-export const Head: HeadFC = () => <title>Not found</title>
+export const Head: HeadFC = () => <Seo title="Página não encontrada" />;
